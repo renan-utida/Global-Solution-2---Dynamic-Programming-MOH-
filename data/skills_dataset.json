@@ -1,0 +1,155 @@
+{
+  "metadata": {
+    "dataset_version": "1.0",
+    "creation_date": "2025-11-16",
+    "description": "Dataset de habilidades para o Motor de Orientação de Habilidades (MOH)",
+    "total_skills": 12,
+    "constraints": {
+      "max_time": 350,
+      "max_complexity": 30
+    },
+    "target_skill": "S6"
+  },
+  "skills": {
+    "S1": {
+      "id": "S1",
+      "nome": "Programação Básica (Python)",
+      "tempo_horas": 80,
+      "valor": 3,
+      "complexidade": 4,
+      "pre_requisitos": [],
+      "uso_principal": "Base",
+      "categoria": "Básica",
+      "descricao": "Fundamentos de programação em Python: sintaxe, estruturas de dados básicas, funções"
+    },
+    "S2": {
+      "id": "S2",
+      "nome": "Modelagem de Dados (SQL)",
+      "tempo_horas": 60,
+      "valor": 4,
+      "complexidade": 3,
+      "pre_requisitos": [],
+      "uso_principal": "Base",
+      "categoria": "Básica",
+      "descricao": "Modelagem relacional, queries SQL, normalização, otimização de consultas"
+    },
+    "S3": {
+      "id": "S3",
+      "nome": "Algoritmos Avançados",
+      "tempo_horas": 100,
+      "valor": 7,
+      "complexidade": 8,
+      "pre_requisitos": ["S1"],
+      "uso_principal": "Crítica (HC1)",
+      "categoria": "Crítica",
+      "descricao": "Estruturas de dados avançadas, algoritmos de ordenação, grafos, programação dinâmica"
+    },
+    "S4": {
+      "id": "S4",
+      "nome": "Fundamentos de Machine Learning",
+      "tempo_horas": 120,
+      "valor": 8,
+      "complexidade": 9,
+      "pre_requisitos": ["S1", "S3"],
+      "uso_principal": "Não Crítica",
+      "categoria": "Avançada",
+      "descricao": "Regressão, classificação, clustering, redes neurais básicas, scikit-learn"
+    },
+    "S5": {
+      "id": "S5",
+      "nome": "Visualização de Dados (BI)",
+      "tempo_horas": 40,
+      "valor": 6,
+      "complexidade": 5,
+      "pre_requisitos": ["S2"],
+      "uso_principal": "Crítica (HC2)",
+      "categoria": "Crítica",
+      "descricao": "Tableau, Power BI, storytelling com dados, dashboards interativos"
+    },
+    "S6": {
+      "id": "S6",
+      "nome": "IA Generativa Ética",
+      "tempo_horas": 150,
+      "valor": 10,
+      "complexidade": 10,
+      "pre_requisitos": ["S4"],
+      "uso_principal": "Objetivo Final",
+      "categoria": "Objetivo",
+      "descricao": "GPT, diffusion models, ética em IA, viés algorítmico, regulamentação"
+    },
+    "S7": {
+      "id": "S7",
+      "nome": "Estruturas em Nuvem (AWS/Azure)",
+      "tempo_horas": 70,
+      "valor": 5,
+      "complexidade": 7,
+      "pre_requisitos": [],
+      "uso_principal": "Crítica (HC3)",
+      "categoria": "Crítica",
+      "descricao": "EC2, S3, Lambda, Azure Functions, arquitetura cloud-native"
+    },
+    "S8": {
+      "id": "S8",
+      "nome": "APIs e Microsserviços",
+      "tempo_horas": 90,
+      "valor": 6,
+      "complexidade": 6,
+      "pre_requisitos": ["S1"],
+      "uso_principal": "Crítica (HC4)",
+      "categoria": "Crítica",
+      "descricao": "REST, GraphQL, arquitetura de microsserviços, containers, Docker"
+    },
+    "S9": {
+      "id": "S9",
+      "nome": "DevOps & CI/CD",
+      "tempo_horas": 110,
+      "valor": 9,
+      "complexidade": 8,
+      "pre_requisitos": ["S7", "S8"],
+      "uso_principal": "Crítica (HC5)",
+      "categoria": "Crítica",
+      "descricao": "Jenkins, GitHub Actions, Kubernetes, pipelines de deploy automatizado"
+    },
+    "H10": {
+      "id": "H10",
+      "nome": "Segurança de Dados",
+      "tempo_horas": 60,
+      "valor": 5,
+      "complexidade": 6,
+      "pre_requisitos": [],
+      "uso_principal": "Lista Grande",
+      "categoria": "Básica",
+      "descricao": "Criptografia, LGPD, GDPR, autenticação, autorização, segurança de APIs"
+    },
+    "H11": {
+      "id": "H11",
+      "nome": "Análise de Big Data",
+      "tempo_horas": 90,
+      "valor": 8,
+      "complexidade": 8,
+      "pre_requisitos": ["S4"],
+      "uso_principal": "Lista Grande",
+      "categoria": "Avançada",
+      "descricao": "Spark, Hadoop, processamento distribuído, data lakes, ETL em escala"
+    },
+    "H12": {
+      "id": "H12",
+      "nome": "Introdução a IoT",
+      "tempo_horas": 30,
+      "valor": 3,
+      "complexidade": 3,
+      "pre_requisitos": [],
+      "uso_principal": "Lista Grande",
+      "categoria": "Básica",
+      "descricao": "Sensores, MQTT, edge computing, integração de dispositivos IoT"
+    }
+  },
+  "habilidades_criticas": ["S3", "S5", "S7", "S8", "S9"],
+  "habilidades_basicas": ["S1", "S2", "S7", "H10", "H12"],
+  "caminho_sugerido": ["S1", "S2", "S3", "S4", "S6"],
+  "observacoes": {
+    "extensoes_permitidas": "Você pode adicionar novas habilidades com IDs únicos",
+    "variacoes_permitidas": "V e T podem variar ±10% para cenários estocásticos",
+    "validacao_obrigatoria": "Sempre validar grafo antes de otimizar (ciclos e órfãos)"
+  }
+}
