@@ -40,6 +40,10 @@ from dataclasses import dataclass
 import numpy as np
 from itertools import combinations
 
+import json
+from pathlib import Path
+from src.config import OUTPUTS_DIR
+
 from src.graph_structures import SkillGraph, build_graph_from_file
 from src.decorators import measure_performance
 from src.config import MARKET_SCENARIOS
@@ -700,3 +704,46 @@ def print_recommendation_details(recommendation: Recommendation) -> None:
         print(f"      • Tempo: {detail['tempo_horas']}h")
     
     print("=" * 70)
+
+def save_desafio5_results(results: dict) -> None:
+    """
+    Salva resultados do Desafio 5 em JSON.
+    
+    Args:
+        results: Resultados completos do Desafio 5
+    """
+    output_file = OUTPUTS_DIR / 'desafio5_results.json'
+    
+    save_data = {
+        'metadata': {
+            'desafio': 'Desafio 5 - Recomendação de Próximas Habilidades',
+            'metodo': 'DP com Look-Ahead + Cenários de Mercado',
+            'horizonte_anos': results['horizon_years'],
+            'n_recomendacoes': results['n_recommendations']
+        },
+        'skills_atuais': results['current_skills'],
+        'recomendacao': results['recommendation'],
+        'cenarios_mercado': results['scenarios'],
+        'comparacao_metodos': results['comparison'],
+        'tempo_execucao_ms': float(results.get('time_ms', 0)),
+        'memoria_kb': float(results.get('memory_kb', 0))
+    }
+    
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(save_data, f, indent=2, ensure_ascii=False)
+    
+    print(f"\n💾 Resultados salvos em: {output_file}")
+
+
+def run_desafio5_complete(
+    graph: SkillGraph,
+    current_skills: Set[str],
+    n_recommendations: int = N_RECOMMENDATIONS,
+    horizon_years: int = RECOMMENDATION_HORIZON_YEARS
+) -> dict:
+    """
+    Executa Desafio 5 completo e salva resultados.
+    """
+    results = solve_complete(graph, current_skills, n_recommendations, horizon_years)
+    save_desafio5_results(results)
+    return results

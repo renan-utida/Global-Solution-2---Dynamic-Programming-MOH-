@@ -28,6 +28,10 @@ from typing import List, Dict, Any, Callable, Tuple
 import time
 from dataclasses import dataclass
 
+import json
+from pathlib import Path
+from src.config import OUTPUTS_DIR
+
 from src.graph_structures import SkillGraph, build_graph_from_file
 from src.decorators import measure_performance
 
@@ -543,3 +547,40 @@ def print_sprint_details(sprint: List[Dict[str, Any]], name: str) -> None:
         print(f"      Tempo: {skill['tempo_horas']}h | Valor: {skill['valor']} | Complexidade: {skill['complexidade']}")
     
     print("=" * 70)
+
+def save_desafio4_results(results: dict) -> None:
+    """
+    Salva resultados do Desafio 4 em JSON.
+    
+    Args:
+        results: Resultados completos do Desafio 4
+    """
+    output_file = OUTPUTS_DIR / 'desafio4_results.json'
+    
+    save_data = {
+        'metadata': {
+            'desafio': 'Desafio 4 - Trilhas Paralelas',
+            'metodo': 'Merge Sort (implementado do zero)',
+            'criterio_ordenacao': 'complexidade'
+        },
+        'merge_sort': results['merge_sort_result'],
+        'native_sort_baseline': results['native_sort_result'],
+        'comparacao': results['comparison'],
+        'analise_complexidade': results['complexity_analysis'],
+        'tempo_execucao_ms': float(results.get('time_ms', 0)),
+        'memoria_kb': float(results.get('memory_kb', 0))
+    }
+    
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(save_data, f, indent=2, ensure_ascii=False)
+    
+    print(f"\n💾 Resultados salvos em: {output_file}")
+
+
+def run_desafio4_complete(graph: SkillGraph, key: str = 'complexidade') -> dict:
+    """
+    Executa Desafio 4 completo e salva resultados.
+    """
+    results = solve_complete(graph, key)
+    save_desafio4_results(results)
+    return results

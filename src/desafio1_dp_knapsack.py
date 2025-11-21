@@ -29,6 +29,10 @@ from typing import Dict, List, Tuple, Set, Any, Optional
 import numpy as np
 from dataclasses import dataclass
 
+import json
+from pathlib import Path
+from src.config import OUTPUTS_DIR
+
 from src.graph_structures import SkillGraph, build_graph_from_file
 from src.monte_carlo import (
     generate_scenarios,
@@ -547,3 +551,104 @@ def print_solution_details(solution: KnapsackSolution) -> None:
         print(f"      Tempo: {detail['tempo']}h | Valor: {detail['valor']} | Complexidade: {detail['complexidade']}")
     
     print("=" * 70)
+
+
+
+def save_desafio1_results(det_results: dict, mc_results: dict, comparison: dict) -> None:
+    """
+    Salva resultados do Desafio 1 em JSON.
+    
+    Args:
+        det_results: Resultados determinísticos
+        mc_results: Resultados Monte Carlo
+        comparison: Comparação entre métodos
+    """
+    output_file = OUTPUTS_DIR / 'desafio1_results.json'
+    
+    # Prepara dados para serialização (remove objetos não-serializáveis)
+    results = {
+        'metadata': {
+            'desafio': 'Desafio 1 - Caminho de Valor Máximo',
+            'metodo': 'DP Knapsack Multidimensional + Monte Carlo',
+            'restricoes': {
+                'max_time': 350,
+                'max_complexity': 30
+            },
+            'target_skill': 'S6'
+        },
+        'deterministico': {
+            'valor_total': float(det_results['total_value']),
+            'tempo_total': float(det_results['total_time']),
+            'complexidade_total': float(det_results['total_complexity']),
+            'caminho': det_results['path'],
+            'skills_selecionadas': det_results['selected_skills'],
+            'tempo_execucao_ms': float(det_results.get('time_ms', 0)),
+            'memoria_kb': float(det_results.get('memory_kb', 0))
+        },
+        'estocastico': {
+            'valor_esperado': float(mc_results['mean_value']),
+            'desvio_padrao': float(mc_results['std_value']),
+            'ic_95': [float(mc_results['ci_95'][0]), float(mc_results['ci_95'][1])],
+            'n_simulacoes': int(mc_results['n_simulations']),
+            'tempo_medio': float(mc_results['mean_time']),
+            'complexidade_media': float(mc_results['mean_complexity']),
+            'tempo_execucao_ms': float(mc_results.get('time_ms', 0)),
+            'memoria_kb': float(mc_results.get('memory_kb', 0))
+        },
+        'comparacao': comparison
+    }
+    
+    # Salva JSON
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(results, f, indent=2, ensure_ascii=False)
+    
+    print(f"\n💾 Resultados salvos em: {output_file}")
+
+@measure_performance
+def run_desafio1_complete(skills_data: dict, graph) -> dict:
+    """
+    Executa Desafio 1 completo e salva resultados.
+    
+    Args:
+        skills_data: Dados das habilidades
+        graph: Grafo de dependências
+    
+    Returns:
+        dict: Todos os resultados
+    """
+    print("\n" + "="*70)
+    print("DESAFIO 1 - CAMINHO DE VALOR MÁXIMO")
+    print("="*70)
+    
+    # 1. Solução Determinística
+    print("\n1️⃣ Executando Solução Determinística...")
+    det_results = solve_dp_knapsack_deterministic(
+        skills_data=skills_data,
+        target_skill='S6',
+        max_time=350,
+        max_complexity=30
+    )
+    
+    # 2. Solução Estocástica (Monte Carlo)
+    print("\n2️⃣ Executando Solução Estocástica (Monte Carlo)...")
+    mc_results = solve_dp_knapsack_stochastic(
+        skills_data=skills_data,
+        target_skill='S6',
+        max_time=350,
+        max_complexity=30,
+        n_simulations=1000,
+        seed=42
+    )
+    
+    # 3. Comparação
+    print("\n3️⃣ Comparando Soluções...")
+    comparison = compare_solutions(det_results, mc_results)
+    
+    # 4. Salva resultados
+    save_desafio1_results(det_results, mc_results, comparison)
+    
+    return {
+        'deterministico': det_results,
+        'estocastico': mc_results,
+        'comparacao': comparison
+    }

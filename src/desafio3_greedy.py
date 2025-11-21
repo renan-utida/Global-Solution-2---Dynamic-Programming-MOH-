@@ -28,6 +28,10 @@ from dataclasses import dataclass
 from itertools import combinations
 import time
 
+import json
+from pathlib import Path
+from src.config import OUTPUTS_DIR
+
 from src.graph_structures import SkillGraph, build_graph_from_file
 from src.decorators import measure_performance
 
@@ -566,3 +570,46 @@ def solve_complete(
         'counterexample': counterexample,
         'complexity_analysis': complexity
     }
+
+def save_desafio3_results(results: dict) -> None:
+    """
+    Salva resultados do Desafio 3 em JSON.
+    
+    Args:
+        results: Resultados completos do Desafio 3
+    """
+    output_file = OUTPUTS_DIR / 'desafio3_results.json'
+    
+    save_data = {
+        'metadata': {
+            'desafio': 'Desafio 3 - Pivô Mais Rápido',
+            'metodo': 'Guloso vs Busca Exaustiva',
+            'habilidades_basicas': BASIC_SKILLS,
+            'target_adaptabilidade': MIN_ADAPTABILITY_TARGET
+        },
+        'guloso': results['greedy'],
+        'otimo': results['optimal'],
+        'comparacao': results['comparison'],
+        'contraexemplo': results['counterexample'],
+        'analise_complexidade': results['complexity_analysis'],
+        'tempo_execucao_ms': float(results.get('time_ms', 0)),
+        'memoria_kb': float(results.get('memory_kb', 0))
+    }
+    
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(save_data, f, indent=2, ensure_ascii=False)
+    
+    print(f"\n💾 Resultados salvos em: {output_file}")
+
+
+def run_desafio3_complete(
+    graph: SkillGraph,
+    basic_skills: List[str] = BASIC_SKILLS,
+    target_value: float = MIN_ADAPTABILITY_TARGET
+) -> dict:
+    """
+    Executa Desafio 3 completo e salva resultados.
+    """
+    results = solve_complete(graph, basic_skills, target_value)
+    save_desafio3_results(results)
+    return results

@@ -27,6 +27,10 @@ from itertools import permutations
 from dataclasses import dataclass
 import numpy as np
 
+import json
+from pathlib import Path
+from src.config import OUTPUTS_DIR
+
 from src.graph_structures import SkillGraph, build_graph_from_file
 from src.graph_validation import validate_graph, ensure_valid_graph
 from src.decorators import measure_performance
@@ -536,3 +540,55 @@ def print_order_details(cost: OrderCost) -> None:
         print(f"      Custo acumulado: {detail['cumulative_cost']}h")
     
     print("=" * 70)
+
+def save_desafio2_results(results: dict) -> None:
+    """
+    Salva resultados do Desafio 2 em JSON.
+    
+    Args:
+        results: Resultados completos do Desafio 2
+    """
+    output_file = OUTPUTS_DIR / 'desafio2_results.json'
+    
+    # Prepara dados (converte OrderCost para dict)
+    save_data = {
+        'metadata': {
+            'desafio': 'Desafio 2 - Verificação Crítica',
+            'metodo': '120 Permutações das Habilidades Críticas',
+            'habilidades_criticas': CRITICAL_SKILLS,
+            'n_permutacoes': 120
+        },
+        'validacao': results['validation'],
+        'top_3_melhores': results['top_3_best'],
+        'top_3_piores': results['top_3_worst'],
+        'estatisticas': results['statistics'],
+        'heuristicas': {
+            'patterns': results['heuristics']['patterns'],
+            'first_position_freq': results['heuristics']['first_position_frequency'],
+            'avg_positions': results['heuristics']['avg_positions'],
+            'recommendation': results['heuristics']['recommendation']
+        },
+        'tempo_execucao_ms': float(results.get('time_ms', 0)),
+        'memoria_kb': float(results.get('memory_kb', 0))
+    }
+    
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(save_data, f, indent=2, ensure_ascii=False)
+    
+    print(f"\n💾 Resultados salvos em: {output_file}")
+
+
+def run_desafio2_complete(graph: SkillGraph, skills: List[str] = CRITICAL_SKILLS) -> dict:
+    """
+    Executa Desafio 2 completo e salva resultados.
+    
+    Args:
+        graph: Grafo de habilidades
+        skills: Lista de habilidades críticas
+    
+    Returns:
+        dict: Todos os resultados
+    """
+    results = solve_complete(graph, skills)
+    save_desafio2_results(results)
+    return results

@@ -25,14 +25,14 @@ GS_DynamicProgramming_MOH/
 │
 ├── 📓 GS_MOH_Principal.ipynb         # Notebook principal (orquestração)
 ├── 📄 README.md                      # Instruções de uso
-├── 📄 relatorio_tecnico.pdf              # Relatório final
+├── 📄 relatorio_tecnico.pdf          # Relatório final
 ├── 📄 requirements.txt               # Dependências Python
 │
 ├── 📁 data/
-│   └── skills_dataset.json          # Dataset das 12 habilidades
+│   └── skills_dataset.json            # Dataset das 12 habilidades
 │
 ├── 📁 src/
-│   ├── __init__.py                  # Módulo Python
+│   ├── __init__.py                    # Módulo Python
 │   ├── config.py                    # Constantes globais
 │   ├── decorators.py                # Decoradores de performance
 │   │
@@ -51,14 +51,13 @@ GS_DynamicProgramming_MOH/
 │
 ├── 📂 tests/
 │   ├── test_fase0.py                 
-│   ├── test_fase1.py                
+│   ├── test_fase1.py     
+│   ├── test_monte_carlo.py            
 │   ├── test_desafio1.py   
 │   ├── test_desafio2.py   
 │   ├── test_desafio3.py          
 │   ├── test_desafio4.py       
-│   ├── test_desafio5.py  
-│   │
-│   └── Não sei se há mais algum arquivo de teste.py             
+│   └── test_desafio5.py               
 │
 └── 📁 outputs/
     ├── desafio1_results.json           # Resultados Desafio 1
