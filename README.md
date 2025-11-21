@@ -29,8 +29,7 @@ GS_DynamicProgramming_MOH/
 ├── 📄 requirements.txt               # Dependências Python
 │
 ├── 📁 data/
-│   ├── skills_dataset.json          # Dataset das 12 habilidades
-│   └── .gitkeep
+│   └── skills_dataset.json          # Dataset das 12 habilidades
 │
 ├── 📁 src/
 │   ├── __init__.py                  # Módulo Python
@@ -50,11 +49,22 @@ GS_DynamicProgramming_MOH/
 │   ├── analysis.py                  # Análises estatísticas
 │   └── visualization.py             # Gráficos e plots
 │
+├── 📂 tests/
+│   ├── test_fase0.py                 
+│   ├── test_fase1.py                
+│   ├── test_desafio1.py   
+│   ├── test_desafio2.py   
+│   ├── test_desafio3.py          
+│   ├── test_desafio4.py       
+│   ├── test_desafio5.py  
+│   │
+│   └── Não sei se há mais algum arquivo de teste.py             
+│
 └── 📁 outputs/
-    ├── desafio1_results.json
-    ├── desafio2_results.json
-    ├── ...
-    └── figures/
+    ├── desafio1_results.json           # Resultados Desafio 1
+    ├── desafio2_results.json           # Resultados Desafio 2
+    ├── ...                             # Resultados Desafio 3, 4 e 5
+    └── figures/                        # Gráficos salvos
 ```
 
 📦 gs-moh-dynamic-programming/
