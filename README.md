@@ -24,8 +24,8 @@ Alcançar a habilidade **S6 - IA Generativa Ética** otimizando:
 GS_DynamicProgramming_MOH/
 │
 ├── 📓 GS_MOH_Principal.ipynb         # Notebook principal (orquestração)
-├── 📄 README.md                      # Este arquivo
-├── 📄 RELATORIO_TECNICO.md          # Relatório técnico completo
+├── 📄 README.md                      # Instruções de uso
+├── 📄 relatorio_tecnico.pdf              # Relatório final
 ├── 📄 requirements.txt               # Dependências Python
 │
 ├── 📁 data/
@@ -47,7 +47,7 @@ GS_DynamicProgramming_MOH/
 │   │
 │   ├── monte_carlo.py               # Simulação estocástica
 │   ├── analysis.py                  # Análises estatísticas
-│   └── visualization.py             # Gráficos e plots
+│   └── visualization.py             # Gráficos e visualizações
 │
 ├── 📂 tests/
 │   ├── test_fase0.py                 
@@ -66,88 +66,6 @@ GS_DynamicProgramming_MOH/
     ├── ...                             # Resultados Desafio 3, 4 e 5
     └── figures/                        # Gráficos salvos
 ```
-
-📦 gs-moh-dynamic-programming/
-│
-├── 📄 README.md                          # Instruções de uso
-├── 📄 requirements.txt                   # Dependências
-├── 📄 relatorio_tecnico.pdf              # Relatório final
-│
-├── 📂 data/
-│   ├── skills_dataset.json               # Dataset base (12 habilidades)
-│   └── market_transitions.json           # Probabilidades (Desafio 5)
-│
-├── 📂 src/
-│   │
-│   ├── 📄 config.py                      # Constantes globais + formatação
-│   ├── 📄 decorators.py                  # @measure_performance, @validate_inputs
-│   │
-│   ├── 📄 graph_structures.py            # CRÍTICO - Grafo + Validação
-│   │   ├── class SkillGraph              # Grafo direcionado ponderado
-│   │   ├── detect_cycles()               # DFS para ciclos
-│   │   ├── find_orphan_nodes()           # Nós com pré-reqs inválidos
-│   │   ├── topological_sort()            # Ordenação topológica
-│   │   └── validate_graph()              # Valida antes de otimizar
-│   │
-│   ├── 📄 challenge1_max_value.py        # Desafio 1: DP Multidimensional
-│   │   ├── knapsack_2d_dp()              # Knapsack com T e C
-│   │   ├── monte_carlo_uncertainty()     # 1000 cenários V~Uniforme
-│   │   ├── deterministic_solution()      # Sem incerteza
-│   │   └── compare_solutions()           # E[V], std, comparação
-│   │
-│   ├── 📄 challenge2_critical_path.py    # Desafio 2: Permutações + Validação
-│   │   ├── enumerate_permutations()      # 5! = 120 permutações
-│   │   ├── calculate_total_cost()        # Tempo + Espera pré-reqs
-│   │   ├── find_top_3_orders()           # 3 melhores
-│   │   └── analyze_heuristics()          # Justificativa
-│   │
-│   ├── 📄 challenge3_greedy_pivot.py     # Desafio 3: Greedy vs Ótimo
-│   │   ├── greedy_by_ratio()             # Guloso V/T
-│   │   ├── exhaustive_search()           # Busca exaustiva (ótimo)
-│   │   ├── generate_counterexample()     # Contraexemplo
-│   │   └── complexity_analysis()         # Discussão Big-O
-│   │
-│   ├── 📄 challenge4_sorting.py          # Desafio 4: Merge/Quick Sort
-│   │   ├── merge_sort()                  # Implementação própria
-│   │   ├── quick_sort()                  # Implementação própria
-│   │   ├── divide_sprints()              # Sprint A + B
-│   │   └── compare_with_native()         # Benchmark vs sorted()
-│   │
-│   ├── 📄 challenge5_recommendation.py   # Desafio 5: DP Horizonte
-│   │   ├── dp_finite_horizon()           # DP com look-ahead
-│   │   ├── simulate_market_transitions() # Probabilidades de cenário
-│   │   └── recommend_top_skills()        # 2-3 habilidades
-│   │
-│   ├── 📄 analysis.py                    # Análises comparativas
-│   │   ├── complexity_analysis()         # Big-O de cada desafio
-│   │   ├── experimental_results()        # Tempos medidos
-│   │   └── generate_metrics_table()      # Tabelas para relatório
-│   │
-│   └── 📄 visualization.py               # Gráficos e visualizações
-│       ├── plot_graph_structure()        # Visualiza grafo de habilidades
-│       ├── plot_monte_carlo_distribution() # Histograma E[V]
-│       ├── plot_time_vs_input_size()     # Performance experimental
-│       ├── plot_permutations_cost()      # Top 3 vs médio
-│       └── create_dashboard()            # Dashboard consolidado
-│
-├── 📂 tests/
-│   ├── test_graph_validation.py          # Testa ciclos, órfãos
-│   ├── test_challenge1.py                # Testa DP multidimensional
-│   ├── test_challenge2.py                # Testa permutações
-│   ├── test_challenge3.py                # Testa greedy vs ótimo
-│   ├── test_challenge4.py                # Testa sorting
-│   └── test_challenge5.py                # Testa recomendações
-│
-├── 📂 notebooks/
-│   └── main_execution.ipynb              # Notebook principal (orquestração)
-│
-└── 📂 results/
-    ├── challenge1_results.json           # Resultados Desafio 1
-    ├── challenge2_results.json           # Resultados Desafio 2
-    ├── challenge3_results.json           # Resultados Desafio 3
-    ├── challenge4_results.json           # Resultados Desafio 4
-    ├── challenge5_results.json           # Resultados Desafio 5
-    └── figures/                          # Gráficos salvos
 
 ---
 
