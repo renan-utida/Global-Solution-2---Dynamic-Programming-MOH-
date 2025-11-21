@@ -253,46 +253,6 @@ def format_constraint(current: float, maximum: float, unit: str = "") -> str:
 
 
 # ============================================
-# MENSAGENS E TEXTOS PADRÃO
-# ============================================
-
-WELCOME_MESSAGE = """
-╔═══════════════════════════════════════════════════╗
-║                                                   ║
-║  GLOBAL SOLUTION - DYNAMIC PROGRAMMING            ║
-║  Motor de Orientação de Habilidades (MOH)         ║
-║                                                   ║
-╚═══════════════════════════════════════════════════╝
-"""
-
-PROBLEM_DESCRIPTION = """
-📋 DESCRIÇÃO DO PROBLEMA:
-
-O MOH (Motor de Orientação de Habilidades) guia o Profissional do Futuro
-na aquisição da sequência de habilidades para maximizar o valor de carreira
-e a adaptabilidade em um mercado em constante mudança.
-
-🎯 OBJETIVO: Alcançar S6 (IA Generativa Ética)
-
-📊 DATASET: 12 habilidades
-   • 5 Habilidades Críticas (S3, S5, S7, S8, S9)
-   • 5 Habilidades Básicas (S1, S2, S7, H10, H12)
-   • 1 Objetivo Final (S6)
-
-🔧 RESTRIÇÕES:
-   • Tempo total: ≤ 350 horas
-   • Complexidade cumulativa: ≤ 30
-   • Pré-requisitos obrigatórios
-
-🚀 5 DESAFIOS:
-   1. Caminho de Valor Máximo (DP Knapsack + Monte Carlo)
-   2. Verificação Crítica (120 permutações)
-   3. Pivô Mais Rápido (Guloso vs Ótimo)
-   4. Trilhas Paralelas (Merge/Quick Sort)
-   5. Recomendação (DP Look-Ahead)
-"""
-
-# ============================================
 # INFORMAÇÕES DE VALIDAÇÃO
 # ============================================
 
