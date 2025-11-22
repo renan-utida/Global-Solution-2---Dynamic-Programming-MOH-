@@ -1,0 +1,488 @@
+{
+  "metadata": {
+    "desafio": "Desafio 2 - Verificação Crítica",
+    "metodo": "120 Permutações das Habilidades Críticas",
+    "habilidades_criticas": [
+      "S3",
+      "S5",
+      "S7",
+      "S8",
+      "S9"
+    ],
+    "n_permutacoes": 120
+  },
+  "validacao": {
+    "valid": true,
+    "cycles": [],
+    "orphans": [],
+    "error_msg": "",
+    "warnings": [
+      "Aviso: 2 nó(s) isolado(s) (sem pré-requisitos e sem dependentes): ['H12', 'H10']"
+    ],
+    "details": {
+      "cycles_info": {
+        "has_cycles": false,
+        "cycles": [],
+        "cycle_edges": [],
+        "num_cycles": 0
+      },
+      "orphans_info": {
+        "has_orphans": false,
+        "orphan_nodes": [],
+        "missing_prereqs": {},
+        "details": [],
+        "num_orphans": 0
+      },
+      "graph_stats": {
+        "num_nodes": 12,
+        "num_edges": 9,
+        "basic_skills": 5,
+        "isolated_nodes": [
+          "H12",
+          "H10"
+        ]
+      }
+    },
+    "time_ms": 1.6128999995999038,
+    "memory_kb": 5.2978515625,
+    "time_formatted": "1.61 ms"
+  },
+  "top_3_melhores": [
+    {
+      "order": [
+        "S3",
+        "S5",
+        "S7",
+        "S8",
+        "S9"
+      ],
+      "order_formatted": "S3 → S5 → S7 → S8 → S9",
+      "total_cost": 630,
+      "acquisition_time": 410,
+      "waiting_time": 220,
+      "details": [
+        {
+          "skill_id": "S3",
+          "nome": "Algoritmos Avançados",
+          "acquisition_time": 100,
+          "waiting_time": 80,
+          "missing_prereqs": [
+            "S1"
+          ],
+          "cost": 180,
+          "cumulative_cost": 180
+        },
+        {
+          "skill_id": "S5",
+          "nome": "Visualização de Dados (BI)",
+          "acquisition_time": 40,
+          "waiting_time": 60,
+          "missing_prereqs": [
+            "S2"
+          ],
+          "cost": 100,
+          "cumulative_cost": 280
+        },
+        {
+          "skill_id": "S7",
+          "nome": "Estruturas em Nuvem (AWS/Azure)",
+          "acquisition_time": 70,
+          "waiting_time": 0,
+          "missing_prereqs": [],
+          "cost": 70,
+          "cumulative_cost": 350
+        },
+        {
+          "skill_id": "S8",
+          "nome": "APIs e Microsserviços",
+          "acquisition_time": 90,
+          "waiting_time": 80,
+          "missing_prereqs": [
+            "S1"
+          ],
+          "cost": 170,
+          "cumulative_cost": 520
+        },
+        {
+          "skill_id": "S9",
+          "nome": "DevOps & CI/CD",
+          "acquisition_time": 110,
+          "waiting_time": 0,
+          "missing_prereqs": [],
+          "cost": 110,
+          "cumulative_cost": 630
+        }
+      ]
+    },
+    {
+      "order": [
+        "S3",
+        "S5",
+        "S8",
+        "S7",
+        "S9"
+      ],
+      "order_formatted": "S3 → S5 → S8 → S7 → S9",
+      "total_cost": 630,
+      "acquisition_time": 410,
+      "waiting_time": 220,
+      "details": [
+        {
+          "skill_id": "S3",
+          "nome": "Algoritmos Avançados",
+          "acquisition_time": 100,
+          "waiting_time": 80,
+          "missing_prereqs": [
+            "S1"
+          ],
+          "cost": 180,
+          "cumulative_cost": 180
+        },
+        {
+          "skill_id": "S5",
+          "nome": "Visualização de Dados (BI)",
+          "acquisition_time": 40,
+          "waiting_time": 60,
+          "missing_prereqs": [
+            "S2"
+          ],
+          "cost": 100,
+          "cumulative_cost": 280
+        },
+        {
+          "skill_id": "S8",
+          "nome": "APIs e Microsserviços",
+          "acquisition_time": 90,
+          "waiting_time": 80,
+          "missing_prereqs": [
+            "S1"
+          ],
+          "cost": 170,
+          "cumulative_cost": 450
+        },
+        {
+          "skill_id": "S7",
+          "nome": "Estruturas em Nuvem (AWS/Azure)",
+          "acquisition_time": 70,
+          "waiting_time": 0,
+          "missing_prereqs": [],
+          "cost": 70,
+          "cumulative_cost": 520
+        },
+        {
+          "skill_id": "S9",
+          "nome": "DevOps & CI/CD",
+          "acquisition_time": 110,
+          "waiting_time": 0,
+          "missing_prereqs": [],
+          "cost": 110,
+          "cumulative_cost": 630
+        }
+      ]
+    },
+    {
+      "order": [
+        "S3",
+        "S7",
+        "S5",
+        "S8",
+        "S9"
+      ],
+      "order_formatted": "S3 → S7 → S5 → S8 → S9",
+      "total_cost": 630,
+      "acquisition_time": 410,
+      "waiting_time": 220,
+      "details": [
+        {
+          "skill_id": "S3",
+          "nome": "Algoritmos Avançados",
+          "acquisition_time": 100,
+          "waiting_time": 80,
+          "missing_prereqs": [
+            "S1"
+          ],
+          "cost": 180,
+          "cumulative_cost": 180
+        },
+        {
+          "skill_id": "S7",
+          "nome": "Estruturas em Nuvem (AWS/Azure)",
+          "acquisition_time": 70,
+          "waiting_time": 0,
+          "missing_prereqs": [],
+          "cost": 70,
+          "cumulative_cost": 250
+        },
+        {
+          "skill_id": "S5",
+          "nome": "Visualização de Dados (BI)",
+          "acquisition_time": 40,
+          "waiting_time": 60,
+          "missing_prereqs": [
+            "S2"
+          ],
+          "cost": 100,
+          "cumulative_cost": 350
+        },
+        {
+          "skill_id": "S8",
+          "nome": "APIs e Microsserviços",
+          "acquisition_time": 90,
+          "waiting_time": 80,
+          "missing_prereqs": [
+            "S1"
+          ],
+          "cost": 170,
+          "cumulative_cost": 520
+        },
+        {
+          "skill_id": "S9",
+          "nome": "DevOps & CI/CD",
+          "acquisition_time": 110,
+          "waiting_time": 0,
+          "missing_prereqs": [],
+          "cost": 110,
+          "cumulative_cost": 630
+        }
+      ]
+    }
+  ],
+  "top_3_piores": [
+    {
+      "order": [
+        "S9",
+        "S8",
+        "S7",
+        "S5",
+        "S3"
+      ],
+      "order_formatted": "S9 → S8 → S7 → S5 → S3",
+      "total_cost": 790,
+      "acquisition_time": 410,
+      "waiting_time": 380,
+      "details": [
+        {
+          "skill_id": "S9",
+          "nome": "DevOps & CI/CD",
+          "acquisition_time": 110,
+          "waiting_time": 160,
+          "missing_prereqs": [
+            "S7",
+            "S8"
+          ],
+          "cost": 270,
+          "cumulative_cost": 270
+        },
+        {
+          "skill_id": "S8",
+          "nome": "APIs e Microsserviços",
+          "acquisition_time": 90,
+          "waiting_time": 80,
+          "missing_prereqs": [
+            "S1"
+          ],
+          "cost": 170,
+          "cumulative_cost": 440
+        },
+        {
+          "skill_id": "S7",
+          "nome": "Estruturas em Nuvem (AWS/Azure)",
+          "acquisition_time": 70,
+          "waiting_time": 0,
+          "missing_prereqs": [],
+          "cost": 70,
+          "cumulative_cost": 510
+        },
+        {
+          "skill_id": "S5",
+          "nome": "Visualização de Dados (BI)",
+          "acquisition_time": 40,
+          "waiting_time": 60,
+          "missing_prereqs": [
+            "S2"
+          ],
+          "cost": 100,
+          "cumulative_cost": 610
+        },
+        {
+          "skill_id": "S3",
+          "nome": "Algoritmos Avançados",
+          "acquisition_time": 100,
+          "waiting_time": 80,
+          "missing_prereqs": [
+            "S1"
+          ],
+          "cost": 180,
+          "cumulative_cost": 790
+        }
+      ]
+    },
+    {
+      "order": [
+        "S9",
+        "S8",
+        "S7",
+        "S3",
+        "S5"
+      ],
+      "order_formatted": "S9 → S8 → S7 → S3 → S5",
+      "total_cost": 790,
+      "acquisition_time": 410,
+      "waiting_time": 380,
+      "details": [
+        {
+          "skill_id": "S9",
+          "nome": "DevOps & CI/CD",
+          "acquisition_time": 110,
+          "waiting_time": 160,
+          "missing_prereqs": [
+            "S7",
+            "S8"
+          ],
+          "cost": 270,
+          "cumulative_cost": 270
+        },
+        {
+          "skill_id": "S8",
+          "nome": "APIs e Microsserviços",
+          "acquisition_time": 90,
+          "waiting_time": 80,
+          "missing_prereqs": [
+            "S1"
+          ],
+          "cost": 170,
+          "cumulative_cost": 440
+        },
+        {
+          "skill_id": "S7",
+          "nome": "Estruturas em Nuvem (AWS/Azure)",
+          "acquisition_time": 70,
+          "waiting_time": 0,
+          "missing_prereqs": [],
+          "cost": 70,
+          "cumulative_cost": 510
+        },
+        {
+          "skill_id": "S3",
+          "nome": "Algoritmos Avançados",
+          "acquisition_time": 100,
+          "waiting_time": 80,
+          "missing_prereqs": [
+            "S1"
+          ],
+          "cost": 180,
+          "cumulative_cost": 690
+        },
+        {
+          "skill_id": "S5",
+          "nome": "Visualização de Dados (BI)",
+          "acquisition_time": 40,
+          "waiting_time": 60,
+          "missing_prereqs": [
+            "S2"
+          ],
+          "cost": 100,
+          "cumulative_cost": 790
+        }
+      ]
+    },
+    {
+      "order": [
+        "S9",
+        "S8",
+        "S5",
+        "S7",
+        "S3"
+      ],
+      "order_formatted": "S9 → S8 → S5 → S7 → S3",
+      "total_cost": 790,
+      "acquisition_time": 410,
+      "waiting_time": 380,
+      "details": [
+        {
+          "skill_id": "S9",
+          "nome": "DevOps & CI/CD",
+          "acquisition_time": 110,
+          "waiting_time": 160,
+          "missing_prereqs": [
+            "S7",
+            "S8"
+          ],
+          "cost": 270,
+          "cumulative_cost": 270
+        },
+        {
+          "skill_id": "S8",
+          "nome": "APIs e Microsserviços",
+          "acquisition_time": 90,
+          "waiting_time": 80,
+          "missing_prereqs": [
+            "S1"
+          ],
+          "cost": 170,
+          "cumulative_cost": 440
+        },
+        {
+          "skill_id": "S5",
+          "nome": "Visualização de Dados (BI)",
+          "acquisition_time": 40,
+          "waiting_time": 60,
+          "missing_prereqs": [
+            "S2"
+          ],
+          "cost": 100,
+          "cumulative_cost": 540
+        },
+        {
+          "skill_id": "S7",
+          "nome": "Estruturas em Nuvem (AWS/Azure)",
+          "acquisition_time": 70,
+          "waiting_time": 0,
+          "missing_prereqs": [],
+          "cost": 70,
+          "cumulative_cost": 610
+        },
+        {
+          "skill_id": "S3",
+          "nome": "Algoritmos Avançados",
+          "acquisition_time": 100,
+          "waiting_time": 80,
+          "missing_prereqs": [
+            "S1"
+          ],
+          "cost": 180,
+          "cumulative_cost": 790
+        }
+      ]
+    }
+  ],
+  "estatisticas": {
+    "avg_all": 710.0,
+    "avg_top_3": 630.0,
+    "best_cost": 630.0,
+    "worst_cost": 790.0,
+    "cost_range": 160.0,
+    "std_deviation": 65.57438524302
+  },
+  "heuristicas": {
+    "patterns": [
+      "Habilidades com múltiplos pré-requisitos (S9) tendem a aparecer nas últimas posições",
+      "Habilidade mais comum na primeira posição: S3 (8/10 vezes)"
+    ],
+    "first_position_freq": {
+      "S5": 2,
+      "S3": 8
+    },
+    "avg_positions": {
+      "S3": 0.2,
+      "S5": 2.0,
+      "S7": 2.0,
+      "S8": 2.0,
+      "S9": 3.8
+    },
+    "no_prereq_skills": [
+      "S7"
+    ],
+    "recommendation": "Recomendação: Priorize habilidades sem pré-requisitos nas primeiras posições para minimizar tempo de espera acumulado."
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "deterministic": {
+    "total_value": 31.0,
+    "total_time": 330,
+    "total_complexity": 30,
+    "path": [
+      "H12",
+      "H10",
+      "S5",
+      "S9",
+      "H11"
+    ],
+    "selected_skills": [
+      {
+        "skill_id": "H12",
+        "nome": "Introdução a IoT",
+        "tempo": 30,
+        "valor": 3,
+        "complexidade": 3
+      },
+      {
+        "skill_id": "H10",
+        "nome": "Segurança de Dados",
+        "tempo": 60,
+        "valor": 5,
+        "complexidade": 6
+      },
+      {
+        "skill_id": "S5",
+        "nome": "Visualização de Dados (BI)",
+        "tempo": 40,
+        "valor": 6,
+        "complexidade": 5
+      },
+      {
+        "skill_id": "S9",
+        "nome": "DevOps & CI/CD",
+        "tempo": 110,
+        "valor": 9,
+        "complexidade": 8
+      },
+      {
+        "skill_id": "H11",
+        "nome": "Análise de Big Data",
+        "tempo": 90,
+        "valor": 8,
+        "complexidade": 8
+      }
+    ],
+    "time_ms": 924.1286000178661,
+    "memory_kb": 1259.5673828125,
+    "reaches_target": false
+  },
+  "stochastic": {
+    "mean_value": 31.05772442360451,
+    "std_value": 0.7980853991524569,
+    "ci_95": [
+      31.00825857808304,
+      31.107190269125976
+    ],
+    "n_simulations": 1000,
+    "min_value": 28.866636275550704,
+    "max_value": 33.16093994603724,
+    "median": 31.05771097892395,
+    "percentile_25": 30.49554850237954,
+    "percentile_75": 31.64021073058441
+  },
+  "comparison": {
+    "deterministic_value": 31,
+    "stochastic_expected": 31.05772442360451,
+    "stochastic_std": 0.7980853991524569,
+    "difference": 0.057724423604508246,
+    "relative_error_percent": 0.18620781807905884,
+    "deterministic_within_95ci": false,
+    "confidence_interval_95": [
+      31.00825857808304,
+      31.107190269125976
+    ],
+    "interpretation": "O valor determinístico (31.00) NÃO está dentro do IC 95% [31.01, 31.11] do valor esperado estocástico (31.06 ± 0.80)."
+  }
+}

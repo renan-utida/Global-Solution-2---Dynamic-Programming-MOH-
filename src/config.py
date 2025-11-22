@@ -290,10 +290,6 @@ __all__ = [
     'format_path',
     'format_constraint',
     
-    # Mensagens
-    'WELCOME_MESSAGE',
-    'PROBLEM_DESCRIPTION',
-    
     # Caminhos
     'DATA_DIR',
     'OUTPUTS_DIR',
