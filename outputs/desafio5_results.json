@@ -1,0 +1,308 @@
+{
+  "metadata": {
+    "desafio": "Desafio 5 - Recomendação de Próximas Habilidades",
+    "metodo": "DP com Look-Ahead + Cenários de Mercado",
+    "horizonte_anos": 5,
+    "n_recomendacoes": 3
+  },
+  "skills_atuais": [
+    "S1",
+    "S2"
+  ],
+  "recomendacao": {
+    "skills_recommended": [
+      "S3",
+      "S5",
+      "S8"
+    ],
+    "expected_value": 19.36,
+    "expected_value_per_scenario": {
+      "ia_em_alta": 19.0,
+      "cloud_first": 19.6,
+      "data_driven": 19.9,
+      "seguranca_critica": 19.0
+    },
+    "reasoning": "Recomendação baseada em:\n• Cenário mais provável: ia_em_alta (35%)\n• Skills recomendadas alinham com tendências de mercado\n• Boosts identificados: S5 (+15% em data_driven)",
+    "details": [
+      {
+        "skill_id": "S3",
+        "nome": "Algoritmos Avançados",
+        "immediate_value": 7.0,
+        "future_value": 7.369999999999999,
+        "total_score": 9.211,
+        "base_value": 7,
+        "tempo_horas": 100,
+        "values_per_scenario": {
+          "ia_em_alta": 7.0,
+          "cloud_first": 7.0,
+          "data_driven": 7.0,
+          "seguranca_critica": 7.0
+        }
+      },
+      {
+        "skill_id": "S5",
+        "nome": "Visualização de Dados (BI)",
+        "immediate_value": 6.18,
+        "future_value": 6.59,
+        "total_score": 8.157,
+        "base_value": 6,
+        "tempo_horas": 40,
+        "values_per_scenario": {
+          "ia_em_alta": 6.0,
+          "cloud_first": 6.0,
+          "data_driven": 6.8999999999999995,
+          "seguranca_critica": 6.0
+        }
+      },
+      {
+        "skill_id": "S8",
+        "nome": "APIs e Microsserviços",
+        "immediate_value": 6.18,
+        "future_value": 6.59,
+        "total_score": 8.157,
+        "base_value": 6,
+        "tempo_horas": 90,
+        "values_per_scenario": {
+          "ia_em_alta": 6.0,
+          "cloud_first": 6.6000000000000005,
+          "data_driven": 6.0,
+          "seguranca_critica": 6.0
+        }
+      }
+    ]
+  },
+  "cenarios_mercado": [
+    {
+      "name": "ia_em_alta",
+      "probability": 0.35,
+      "boosts": {
+        "S4": 1.2,
+        "S6": 1.25,
+        "H11": 1.15
+      }
+    },
+    {
+      "name": "cloud_first",
+      "probability": 0.3,
+      "boosts": {
+        "S7": 1.15,
+        "S9": 1.2,
+        "S8": 1.1
+      }
+    },
+    {
+      "name": "data_driven",
+      "probability": 0.2,
+      "boosts": {
+        "S2": 1.1,
+        "S5": 1.15,
+        "H11": 1.2
+      }
+    },
+    {
+      "name": "seguranca_critica",
+      "probability": 0.15,
+      "boosts": {
+        "H10": 1.25,
+        "S7": 1.1,
+        "S9": 1.1
+      }
+    }
+  ],
+  "comparacao_metodos": {
+    "greedy_simple": {
+      "skills_recommended": [
+        "S3",
+        "S5",
+        "S8"
+      ],
+      "expected_value": 19.36,
+      "expected_value_per_scenario": {
+        "ia_em_alta": 19.0,
+        "cloud_first": 19.6,
+        "data_driven": 19.9,
+        "seguranca_critica": 19.0
+      },
+      "reasoning": "Recomendação baseada em:\n• Cenário mais provável: ia_em_alta (35%)\n• Skills recomendadas alinham com tendências de mercado\n• Boosts identificados: S5 (+15% em data_driven)",
+      "details": [
+        {
+          "skill_id": "S3",
+          "nome": "Algoritmos Avançados",
+          "immediate_value": 7.0,
+          "future_value": 0.0,
+          "total_score": 7.0,
+          "base_value": 7,
+          "tempo_horas": 100,
+          "values_per_scenario": {
+            "ia_em_alta": 7.0,
+            "cloud_first": 7.0,
+            "data_driven": 7.0,
+            "seguranca_critica": 7.0
+          }
+        },
+        {
+          "skill_id": "S5",
+          "nome": "Visualização de Dados (BI)",
+          "immediate_value": 6.18,
+          "future_value": 0.0,
+          "total_score": 6.18,
+          "base_value": 6,
+          "tempo_horas": 40,
+          "values_per_scenario": {
+            "ia_em_alta": 6.0,
+            "cloud_first": 6.0,
+            "data_driven": 6.8999999999999995,
+            "seguranca_critica": 6.0
+          }
+        },
+        {
+          "skill_id": "S8",
+          "nome": "APIs e Microsserviços",
+          "immediate_value": 6.18,
+          "future_value": 0.0,
+          "total_score": 6.18,
+          "base_value": 6,
+          "tempo_horas": 90,
+          "values_per_scenario": {
+            "ia_em_alta": 6.0,
+            "cloud_first": 6.6000000000000005,
+            "data_driven": 6.0,
+            "seguranca_critica": 6.0
+          }
+        }
+      ]
+    },
+    "greedy_lookahead": {
+      "skills_recommended": [
+        "S3",
+        "S5",
+        "S8"
+      ],
+      "expected_value": 19.36,
+      "expected_value_per_scenario": {
+        "ia_em_alta": 19.0,
+        "cloud_first": 19.6,
+        "data_driven": 19.9,
+        "seguranca_critica": 19.0
+      },
+      "reasoning": "Recomendação baseada em:\n• Cenário mais provável: ia_em_alta (35%)\n• Skills recomendadas alinham com tendências de mercado\n• Boosts identificados: S5 (+15% em data_driven)",
+      "details": [
+        {
+          "skill_id": "S3",
+          "nome": "Algoritmos Avançados",
+          "immediate_value": 7.0,
+          "future_value": 7.369999999999999,
+          "total_score": 9.211,
+          "base_value": 7,
+          "tempo_horas": 100,
+          "values_per_scenario": {
+            "ia_em_alta": 7.0,
+            "cloud_first": 7.0,
+            "data_driven": 7.0,
+            "seguranca_critica": 7.0
+          }
+        },
+        {
+          "skill_id": "S5",
+          "nome": "Visualização de Dados (BI)",
+          "immediate_value": 6.18,
+          "future_value": 6.59,
+          "total_score": 8.157,
+          "base_value": 6,
+          "tempo_horas": 40,
+          "values_per_scenario": {
+            "ia_em_alta": 6.0,
+            "cloud_first": 6.0,
+            "data_driven": 6.8999999999999995,
+            "seguranca_critica": 6.0
+          }
+        },
+        {
+          "skill_id": "S8",
+          "nome": "APIs e Microsserviços",
+          "immediate_value": 6.18,
+          "future_value": 6.59,
+          "total_score": 8.157,
+          "base_value": 6,
+          "tempo_horas": 90,
+          "values_per_scenario": {
+            "ia_em_alta": 6.0,
+            "cloud_first": 6.6000000000000005,
+            "data_driven": 6.0,
+            "seguranca_critica": 6.0
+          }
+        }
+      ]
+    },
+    "dp_exhaustive": {
+      "skills_recommended": [
+        "S5",
+        "S3",
+        "S8"
+      ],
+      "expected_value": 19.36,
+      "expected_value_per_scenario": {
+        "ia_em_alta": 19.0,
+        "cloud_first": 19.6,
+        "data_driven": 19.9,
+        "seguranca_critica": 19.0
+      },
+      "reasoning": "Recomendação baseada em:\n• Cenário mais provável: ia_em_alta (35%)\n• Skills recomendadas alinham com tendências de mercado\n• Boosts identificados: S5 (+15% em data_driven)",
+      "details": [
+        {
+          "skill_id": "S5",
+          "nome": "Visualização de Dados (BI)",
+          "immediate_value": 6.18,
+          "future_value": 0.0,
+          "total_score": 6.18,
+          "base_value": 6,
+          "tempo_horas": 40,
+          "values_per_scenario": {
+            "ia_em_alta": 6.0,
+            "cloud_first": 6.0,
+            "data_driven": 6.8999999999999995,
+            "seguranca_critica": 6.0
+          }
+        },
+        {
+          "skill_id": "S3",
+          "nome": "Algoritmos Avançados",
+          "immediate_value": 7.0,
+          "future_value": 0.0,
+          "total_score": 7.0,
+          "base_value": 7,
+          "tempo_horas": 100,
+          "values_per_scenario": {
+            "ia_em_alta": 7.0,
+            "cloud_first": 7.0,
+            "data_driven": 7.0,
+            "seguranca_critica": 7.0
+          }
+        },
+        {
+          "skill_id": "S8",
+          "nome": "APIs e Microsserviços",
+          "immediate_value": 6.18,
+          "future_value": 0.0,
+          "total_score": 6.18,
+          "base_value": 6,
+          "tempo_horas": 90,
+          "values_per_scenario": {
+            "ia_em_alta": 6.0,
+            "cloud_first": 6.6000000000000005,
+            "data_driven": 6.0,
+            "seguranca_critica": 6.0
+          }
+        }
+      ]
+    },
+    "comparison": {
+      "greedy_simple_value": 19.36,
+      "greedy_lookahead_value": 19.36,
+      "dp_exhaustive_value": 19.36,
+      "best_method": "greedy_simple"
+    }
+  },
+  "tempo_execucao_ms": 0.0,
+  "memoria_kb": 0.0
+}
