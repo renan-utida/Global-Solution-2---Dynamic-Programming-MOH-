@@ -1,0 +1,195 @@
+{
+  "metadata": {
+    "desafio": "Desafio 3 - Pivô Mais Rápido",
+    "metodo": "Guloso vs Busca Exaustiva",
+    "habilidades_basicas": [
+      "S1",
+      "S2",
+      "S7",
+      "H10",
+      "H12"
+    ],
+    "target_adaptabilidade": 15
+  },
+  "guloso": {
+    "skills_selected": [
+      "H12",
+      "H10",
+      "S7",
+      "S2"
+    ],
+    "total_value": 17,
+    "total_time": 220,
+    "algorithm": "Greedy",
+    "meets_target": true,
+    "efficiency": 0.07727272727272727,
+    "details": [
+      {
+        "skill_id": "H12",
+        "nome": "Introdução a IoT",
+        "time": 30,
+        "value": 3,
+        "vt_ratio": 0.1,
+        "cumulative_value": 3,
+        "cumulative_time": 30
+      },
+      {
+        "skill_id": "H10",
+        "nome": "Segurança de Dados",
+        "time": 60,
+        "value": 5,
+        "vt_ratio": 0.08333333333333333,
+        "cumulative_value": 8,
+        "cumulative_time": 90
+      },
+      {
+        "skill_id": "S7",
+        "nome": "Estruturas em Nuvem (AWS/Azure)",
+        "time": 70,
+        "value": 5,
+        "vt_ratio": 0.07142857142857142,
+        "cumulative_value": 13,
+        "cumulative_time": 160
+      },
+      {
+        "skill_id": "S2",
+        "nome": "Modelagem de Dados (SQL)",
+        "time": 60,
+        "value": 4,
+        "vt_ratio": 0.06666666666666667,
+        "cumulative_value": 17,
+        "cumulative_time": 220
+      }
+    ]
+  },
+  "otimo": {
+    "skills_selected": [
+      "S2",
+      "S7",
+      "H10",
+      "H12"
+    ],
+    "total_value": 17,
+    "total_time": 220,
+    "algorithm": "Exhaustive",
+    "meets_target": true,
+    "efficiency": 0.07727272727272727,
+    "details": [
+      {
+        "skill_id": "S2",
+        "nome": "Modelagem de Dados (SQL)",
+        "time": 60,
+        "value": 4,
+        "vt_ratio": 0.06666666666666667,
+        "cumulative_value": 4,
+        "cumulative_time": 60
+      },
+      {
+        "skill_id": "S7",
+        "nome": "Estruturas em Nuvem (AWS/Azure)",
+        "time": 70,
+        "value": 5,
+        "vt_ratio": 0.07142857142857142,
+        "cumulative_value": 9,
+        "cumulative_time": 130
+      },
+      {
+        "skill_id": "H10",
+        "nome": "Segurança de Dados",
+        "time": 60,
+        "value": 5,
+        "vt_ratio": 0.08333333333333333,
+        "cumulative_value": 14,
+        "cumulative_time": 190
+      },
+      {
+        "skill_id": "H12",
+        "nome": "Introdução a IoT",
+        "time": 30,
+        "value": 3,
+        "vt_ratio": 0.1,
+        "cumulative_value": 17,
+        "cumulative_time": 220
+      }
+    ]
+  },
+  "comparacao": {
+    "greedy_is_optimal": true,
+    "value_difference": 0.0,
+    "time_difference": 0.0,
+    "greedy_efficiency": 0.07727272727272727,
+    "optimal_efficiency": 0.07727272727272727
+  },
+  "contraexemplo": {
+    "skills": {
+      "A": {
+        "value": 8,
+        "time": 10,
+        "vt_ratio": 0.8
+      },
+      "B": {
+        "value": 7,
+        "time": 5,
+        "vt_ratio": 1.4
+      },
+      "C": {
+        "value": 9,
+        "time": 6,
+        "vt_ratio": 1.5
+      }
+    },
+    "target": 15,
+    "greedy": {
+      "selected": [
+        "C",
+        "B"
+      ],
+      "value": 16,
+      "time": 11,
+      "meets_target": true
+    },
+    "optimal": {
+      "selected": [
+        "A",
+        "C"
+      ],
+      "value": 17,
+      "time": 16,
+      "meets_target": true
+    },
+    "greedy_is_optimal": false,
+    "explanation": "Contraexemplo:\n  Guloso escolhe: C + B = 16 (11h)\n  Ótimo seria: A + C = 17 (16h)\n  Diferença: 1 de valor\n  Conclusão: Guloso minimiza TEMPO, não maximiza VALOR!"
+  },
+  "analise_complexidade": {
+    "greedy": {
+      "time_complexity": "O(n log n)",
+      "space_complexity": "O(n)",
+      "explanation": "Ordenação por V/T: O(n log n)\nSeleção iterativa: O(n)\nTotal: O(n log n)",
+      "practical": "Muito eficiente para n grande"
+    },
+    "exhaustive": {
+      "time_complexity": "O(2^n × n)",
+      "space_complexity": "O(n)",
+      "explanation": "Enumera 2^n subconjuntos: O(2^n)\nPara cada subconjunto, calcula soma: O(n)\nTotal: O(2^n × n)",
+      "practical": "Inviável para n > 20"
+    },
+    "comparison": {
+      "n=5": {
+        "greedy": "~12 operações",
+        "exhaustive": "~160 operações",
+        "ratio": "13x mais lento"
+      },
+      "n=10": {
+        "greedy": "~33 operações",
+        "exhaustive": "~10,240 operações",
+        "ratio": "310x mais lento"
+      },
+      "n=20": {
+        "greedy": "~86 operações",
+        "exhaustive": "~20,971,520 operações",
+        "ratio": "~244,000x mais lento"
+      }
+    },
+    "recommendation": "Para n ≤ 20: Exaustivo é viável e garante ótimo\nPara n > 20: Guloso é necessário (exaustivo é impraticável)\nNeste problema (n=5): Ambos são rápidos, exaustivo garante ótimo"
+  }
+}
