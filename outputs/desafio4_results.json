@@ -1,0 +1,402 @@
+{
+  "metadata": {
+    "desafio": "Desafio 4 - Trilhas Paralelas",
+    "metodo": "Merge Sort (implementado do zero)",
+    "criterio_ordenacao": "complexidade"
+  },
+  "merge_sort": {
+    "sorted_skills": [
+      {
+        "skill_id": "H12",
+        "nome": "Introdução a IoT",
+        "complexidade": 3,
+        "tempo_horas": 30,
+        "valor": 3
+      },
+      {
+        "skill_id": "S2",
+        "nome": "Modelagem de Dados (SQL)",
+        "complexidade": 3,
+        "tempo_horas": 60,
+        "valor": 4
+      },
+      {
+        "skill_id": "S1",
+        "nome": "Programação Básica (Python)",
+        "complexidade": 4,
+        "tempo_horas": 80,
+        "valor": 3
+      },
+      {
+        "skill_id": "S5",
+        "nome": "Visualização de Dados (BI)",
+        "complexidade": 5,
+        "tempo_horas": 40,
+        "valor": 6
+      },
+      {
+        "skill_id": "S8",
+        "nome": "APIs e Microsserviços",
+        "complexidade": 6,
+        "tempo_horas": 90,
+        "valor": 6
+      },
+      {
+        "skill_id": "H10",
+        "nome": "Segurança de Dados",
+        "complexidade": 6,
+        "tempo_horas": 60,
+        "valor": 5
+      },
+      {
+        "skill_id": "S7",
+        "nome": "Estruturas em Nuvem (AWS/Azure)",
+        "complexidade": 7,
+        "tempo_horas": 70,
+        "valor": 5
+      },
+      {
+        "skill_id": "S3",
+        "nome": "Algoritmos Avançados",
+        "complexidade": 8,
+        "tempo_horas": 100,
+        "valor": 7
+      },
+      {
+        "skill_id": "S9",
+        "nome": "DevOps & CI/CD",
+        "complexidade": 8,
+        "tempo_horas": 110,
+        "valor": 9
+      },
+      {
+        "skill_id": "H11",
+        "nome": "Análise de Big Data",
+        "complexidade": 8,
+        "tempo_horas": 90,
+        "valor": 8
+      },
+      {
+        "skill_id": "S4",
+        "nome": "Fundamentos de Machine Learning",
+        "complexidade": 9,
+        "tempo_horas": 120,
+        "valor": 8
+      },
+      {
+        "skill_id": "S6",
+        "nome": "IA Generativa Ética",
+        "complexidade": 10,
+        "tempo_horas": 150,
+        "valor": 10
+      }
+    ],
+    "algorithm": "Merge Sort",
+    "execution_time": 5.370000144466758e-05,
+    "comparisons": 30,
+    "sprint_a": [
+      {
+        "skill_id": "H12",
+        "nome": "Introdução a IoT",
+        "complexidade": 3,
+        "tempo_horas": 30,
+        "valor": 3
+      },
+      {
+        "skill_id": "S2",
+        "nome": "Modelagem de Dados (SQL)",
+        "complexidade": 3,
+        "tempo_horas": 60,
+        "valor": 4
+      },
+      {
+        "skill_id": "S1",
+        "nome": "Programação Básica (Python)",
+        "complexidade": 4,
+        "tempo_horas": 80,
+        "valor": 3
+      },
+      {
+        "skill_id": "S5",
+        "nome": "Visualização de Dados (BI)",
+        "complexidade": 5,
+        "tempo_horas": 40,
+        "valor": 6
+      },
+      {
+        "skill_id": "S8",
+        "nome": "APIs e Microsserviços",
+        "complexidade": 6,
+        "tempo_horas": 90,
+        "valor": 6
+      },
+      {
+        "skill_id": "H10",
+        "nome": "Segurança de Dados",
+        "complexidade": 6,
+        "tempo_horas": 60,
+        "valor": 5
+      }
+    ],
+    "sprint_b": [
+      {
+        "skill_id": "S7",
+        "nome": "Estruturas em Nuvem (AWS/Azure)",
+        "complexidade": 7,
+        "tempo_horas": 70,
+        "valor": 5
+      },
+      {
+        "skill_id": "S3",
+        "nome": "Algoritmos Avançados",
+        "complexidade": 8,
+        "tempo_horas": 100,
+        "valor": 7
+      },
+      {
+        "skill_id": "S9",
+        "nome": "DevOps & CI/CD",
+        "complexidade": 8,
+        "tempo_horas": 110,
+        "valor": 9
+      },
+      {
+        "skill_id": "H11",
+        "nome": "Análise de Big Data",
+        "complexidade": 8,
+        "tempo_horas": 90,
+        "valor": 8
+      },
+      {
+        "skill_id": "S4",
+        "nome": "Fundamentos de Machine Learning",
+        "complexidade": 9,
+        "tempo_horas": 120,
+        "valor": 8
+      },
+      {
+        "skill_id": "S6",
+        "nome": "IA Generativa Ética",
+        "complexidade": 10,
+        "tempo_horas": 150,
+        "valor": 10
+      }
+    ]
+  },
+  "native_sort_baseline": {
+    "sorted_skills": [
+      {
+        "skill_id": "H12",
+        "nome": "Introdução a IoT",
+        "complexidade": 3,
+        "tempo_horas": 30,
+        "valor": 3
+      },
+      {
+        "skill_id": "S2",
+        "nome": "Modelagem de Dados (SQL)",
+        "complexidade": 3,
+        "tempo_horas": 60,
+        "valor": 4
+      },
+      {
+        "skill_id": "S1",
+        "nome": "Programação Básica (Python)",
+        "complexidade": 4,
+        "tempo_horas": 80,
+        "valor": 3
+      },
+      {
+        "skill_id": "S5",
+        "nome": "Visualização de Dados (BI)",
+        "complexidade": 5,
+        "tempo_horas": 40,
+        "valor": 6
+      },
+      {
+        "skill_id": "S8",
+        "nome": "APIs e Microsserviços",
+        "complexidade": 6,
+        "tempo_horas": 90,
+        "valor": 6
+      },
+      {
+        "skill_id": "H10",
+        "nome": "Segurança de Dados",
+        "complexidade": 6,
+        "tempo_horas": 60,
+        "valor": 5
+      },
+      {
+        "skill_id": "S7",
+        "nome": "Estruturas em Nuvem (AWS/Azure)",
+        "complexidade": 7,
+        "tempo_horas": 70,
+        "valor": 5
+      },
+      {
+        "skill_id": "S3",
+        "nome": "Algoritmos Avançados",
+        "complexidade": 8,
+        "tempo_horas": 100,
+        "valor": 7
+      },
+      {
+        "skill_id": "S9",
+        "nome": "DevOps & CI/CD",
+        "complexidade": 8,
+        "tempo_horas": 110,
+        "valor": 9
+      },
+      {
+        "skill_id": "H11",
+        "nome": "Análise de Big Data",
+        "complexidade": 8,
+        "tempo_horas": 90,
+        "valor": 8
+      },
+      {
+        "skill_id": "S4",
+        "nome": "Fundamentos de Machine Learning",
+        "complexidade": 9,
+        "tempo_horas": 120,
+        "valor": 8
+      },
+      {
+        "skill_id": "S6",
+        "nome": "IA Generativa Ética",
+        "complexidade": 10,
+        "tempo_horas": 150,
+        "valor": 10
+      }
+    ],
+    "algorithm": "Python Native Sort (Timsort)",
+    "execution_time": 8.100003469735384e-06,
+    "comparisons": -1,
+    "sprint_a": [
+      {
+        "skill_id": "H12",
+        "nome": "Introdução a IoT",
+        "complexidade": 3,
+        "tempo_horas": 30,
+        "valor": 3
+      },
+      {
+        "skill_id": "S2",
+        "nome": "Modelagem de Dados (SQL)",
+        "complexidade": 3,
+        "tempo_horas": 60,
+        "valor": 4
+      },
+      {
+        "skill_id": "S1",
+        "nome": "Programação Básica (Python)",
+        "complexidade": 4,
+        "tempo_horas": 80,
+        "valor": 3
+      },
+      {
+        "skill_id": "S5",
+        "nome": "Visualização de Dados (BI)",
+        "complexidade": 5,
+        "tempo_horas": 40,
+        "valor": 6
+      },
+      {
+        "skill_id": "S8",
+        "nome": "APIs e Microsserviços",
+        "complexidade": 6,
+        "tempo_horas": 90,
+        "valor": 6
+      },
+      {
+        "skill_id": "H10",
+        "nome": "Segurança de Dados",
+        "complexidade": 6,
+        "tempo_horas": 60,
+        "valor": 5
+      }
+    ],
+    "sprint_b": [
+      {
+        "skill_id": "S7",
+        "nome": "Estruturas em Nuvem (AWS/Azure)",
+        "complexidade": 7,
+        "tempo_horas": 70,
+        "valor": 5
+      },
+      {
+        "skill_id": "S3",
+        "nome": "Algoritmos Avançados",
+        "complexidade": 8,
+        "tempo_horas": 100,
+        "valor": 7
+      },
+      {
+        "skill_id": "S9",
+        "nome": "DevOps & CI/CD",
+        "complexidade": 8,
+        "tempo_horas": 110,
+        "valor": 9
+      },
+      {
+        "skill_id": "H11",
+        "nome": "Análise de Big Data",
+        "complexidade": 8,
+        "tempo_horas": 90,
+        "valor": 8
+      },
+      {
+        "skill_id": "S4",
+        "nome": "Fundamentos de Machine Learning",
+        "complexidade": 9,
+        "tempo_horas": 120,
+        "valor": 8
+      },
+      {
+        "skill_id": "S6",
+        "nome": "IA Generativa Ética",
+        "complexidade": 10,
+        "tempo_horas": 150,
+        "valor": 10
+      }
+    ]
+  },
+  "comparacao": {
+    "time_ratio": 6.629626968100778,
+    "results_match": true
+  },
+  "analise_complexidade": {
+    "merge_sort": {
+      "time_complexity": {
+        "best": "O(n log n)",
+        "average": "O(n log n)",
+        "worst": "O(n log n)",
+        "explanation": "Merge Sort sempre divide o array ao meio (log n níveis) e mescla em O(n) por nível, resultando em O(n log n) independentemente da distribuição dos dados."
+      },
+      "space_complexity": {
+        "auxiliary": "O(n)",
+        "explanation": "Precisa de um array auxiliar de tamanho n para mesclar as sublistas ordenadas."
+      },
+      "stability": "Estável",
+      "adaptive": "Não adaptativo (tempo fixo independente da ordem inicial)",
+      "in_place": "Não (requer espaço auxiliar O(n))"
+    },
+    "timsort": {
+      "description": "Sort nativo do Python (híbrido de Merge + Insertion)",
+      "time_complexity": {
+        "best": "O(n)",
+        "average": "O(n log n)",
+        "worst": "O(n log n)"
+      },
+      "space_complexity": {
+        "auxiliary": "O(n)"
+      },
+      "stability": "Estável",
+      "adaptive": "Adaptativo (aproveita ordem parcial)"
+    },
+    "justification": "Escolhemos Merge Sort porque:\n1. Complexidade O(n log n) GARANTIDA (sem pior caso O(n²))\n2. Estável (mantém ordem relativa)\n3. Previsível (sempre O(n log n))\n4. Didático (algoritmo clássico de dividir e conquistar)\n5. Bom para dados grandes (divide e conquista)\n\nQuick Sort seria mais rápido na prática (melhor constante), mas tem pior caso O(n²) se pivô mal escolhido."
+  },
+  "tempo_execucao_ms": 0.0,
+  "memoria_kb": 0.0
+}
