@@ -43,9 +43,9 @@
         ]
       }
     },
-    "time_ms": 1.6128999995999038,
-    "memory_kb": 5.2978515625,
-    "time_formatted": "1.61 ms"
+    "time_ms": 0.35170000046491623,
+    "memory_kb": 5.0478515625,
+    "time_formatted": "351.70 μs"
   },
   "top_3_melhores": [
     {
@@ -470,8 +470,8 @@
       "Habilidade mais comum na primeira posição: S3 (8/10 vezes)"
     ],
     "first_position_freq": {
-      "S5": 2,
-      "S3": 8
+      "S3": 8,
+      "S5": 2
     },
     "avg_positions": {
       "S3": 0.2,

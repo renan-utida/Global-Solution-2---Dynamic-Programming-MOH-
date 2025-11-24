@@ -419,6 +419,88 @@ class SkillGraph:
     def __repr__(self) -> str:
         """Representação string do grafo."""
         return f"SkillGraph(nodes={len(self.nodes)}, edges={sum(len(v) for v in self.adjacency_list.values())})"
+    
+    def bfs_shortest_path(self, start: str, end: str) -> Optional[List[str]]:
+        """
+        Encontra o caminho mais curto entre start e end usando BFS.
+        
+        Em grafos não-ponderados, BFS garante o caminho com menor número de arestas.
+        
+        Args:
+            start: ID da habilidade inicial
+            end: ID da habilidade final
+        
+        Returns:
+            Optional[List[str]]: Caminho mais curto, ou None se não existe
+        
+        Complexity:
+            O(V + E)
+        
+        Examples:
+            >>> path = graph.bfs_shortest_path('S1', 'S6')
+            >>> print(path)
+            ['S1', 'S3', 'S4', 'S6']
+        """
+        if start not in self.nodes or end not in self.nodes:
+            return None
+        
+        if start == end:
+            return [start]
+        
+        from collections import deque
+        
+        # Fila BFS: (nó_atual, caminho_até_aqui)
+        queue = deque([(start, [start])])
+        visited = {start}
+        
+        while queue:
+            current, path = queue.popleft()
+            
+            # Explora vizinhos
+            for neighbor in self.adjacency_list[current]:
+                if neighbor == end:
+                    # Encontrou o destino!
+                    return path + [neighbor]
+                
+                if neighbor not in visited:
+                    visited.add(neighbor)
+                    queue.append((neighbor, path + [neighbor]))
+        
+        # Não há caminho
+        return None
+
+
+    def get_all_paths_to_target(self, target: str, max_depth: int = 10) -> List[List[str]]:
+        """
+        Retorna todos os caminhos possíveis que levam ao target,
+        partindo de habilidades básicas.
+        
+        Útil para encontrar diferentes estratégias de aprendizado.
+        
+        Args:
+            target: ID da habilidade objetivo
+            max_depth: Profundidade máxima de busca
+        
+        Returns:
+            List[List[str]]: Lista de caminhos possíveis
+        """
+        if target not in self.nodes:
+            return []
+        
+        basic_skills = self.get_basic_skills()
+        all_paths = []
+        
+        for basic_skill in basic_skills:
+            paths = self.get_all_paths(basic_skill, target)
+            all_paths.extend(paths)
+        
+        # Filtra por profundidade
+        filtered = [path for path in all_paths if len(path) <= max_depth]
+        
+        # Ordena por tamanho (caminhos mais curtos primeiro)
+        filtered.sort(key=len)
+        
+        return filtered
 
 
 def load_skills_from_json(filepath: Path) -> Dict[str, Dict[str, Any]]:

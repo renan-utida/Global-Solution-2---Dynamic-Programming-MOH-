@@ -47,35 +47,35 @@
         "complexidade": 8
       }
     ],
-    "time_ms": 924.1286000178661,
-    "memory_kb": 1259.5673828125,
+    "time_ms": 692.8503000526689,
+    "memory_kb": 1255.494140625,
     "reaches_target": false
   },
   "stochastic": {
-    "mean_value": 31.05772442360451,
-    "std_value": 0.7980853991524569,
+    "mean_value": 31.074901598235098,
+    "std_value": 0.7810455014198928,
     "ci_95": [
-      31.00825857808304,
-      31.107190269125976
+      31.02649189651708,
+      31.123311299953116
     ],
     "n_simulations": 1000,
-    "min_value": 28.866636275550704,
-    "max_value": 33.16093994603724,
-    "median": 31.05771097892395,
-    "percentile_25": 30.49554850237954,
-    "percentile_75": 31.64021073058441
+    "min_value": 28.59919855846939,
+    "max_value": 33.350351465878234,
+    "median": 31.06024309549461,
+    "percentile_25": 30.544777395249813,
+    "percentile_75": 31.611616120260905
   },
   "comparison": {
     "deterministic_value": 31,
-    "stochastic_expected": 31.05772442360451,
-    "stochastic_std": 0.7980853991524569,
-    "difference": 0.057724423604508246,
-    "relative_error_percent": 0.18620781807905884,
+    "stochastic_expected": 31.074901598235098,
+    "stochastic_std": 0.7810455014198928,
+    "difference": 0.07490159823509757,
+    "relative_error_percent": 0.2416180588228954,
     "deterministic_within_95ci": false,
     "confidence_interval_95": [
-      31.00825857808304,
-      31.107190269125976
+      31.02649189651708,
+      31.123311299953116
     ],
-    "interpretation": "O valor determinístico (31.00) NÃO está dentro do IC 95% [31.01, 31.11] do valor esperado estocástico (31.06 ± 0.80)."
+    "interpretation": "O valor determinístico (31.00) NÃO está dentro do IC 95% [31.03, 31.12] do valor esperado estocástico (31.07 ± 0.78)."
   }
 }

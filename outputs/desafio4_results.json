@@ -92,8 +92,8 @@
       }
     ],
     "algorithm": "Merge Sort",
-    "execution_time": 5.370000144466758e-05,
-    "comparisons": 30,
+    "execution_time": 3.1100003980100155e-05,
+    "comparisons": 31,
     "sprint_a": [
       {
         "skill_id": "H12",
@@ -271,7 +271,7 @@
       }
     ],
     "algorithm": "Python Native Sort (Timsort)",
-    "execution_time": 8.100003469735384e-06,
+    "execution_time": 4.100031219422817e-06,
     "comparisons": -1,
     "sprint_a": [
       {
@@ -363,7 +363,7 @@
     ]
   },
   "comparacao": {
-    "time_ratio": 6.629626968100778,
+    "time_ratio": 7.585309066129078,
     "results_match": true
   },
   "analise_complexidade": {

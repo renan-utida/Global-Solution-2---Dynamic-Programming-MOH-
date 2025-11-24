@@ -487,6 +487,75 @@ def get_cycle_free_subgraph(graph, nodes_to_include: Set[str]):
     else:
         return None
 
+def check_reachability(graph, target: str) -> Dict[str, Any]:
+    """
+    Verifica se o target é alcançável a partir de habilidades básicas.
+    
+    Args:
+        graph: Instância de SkillGraph
+        target: ID da habilidade objetivo
+    
+    Returns:
+        Dict contendo:
+            - reachable: bool - True se target é alcançável
+            - paths_count: int - Número de caminhos possíveis
+            - shortest_path: List[str] - Caminho mais curto
+            - unreachable_from: List[str] - Nós que não conseguem alcançar target
+    """
+    basic_skills = graph.get_basic_skills()
+    
+    reachable_from_any = False
+    paths_count = 0
+    shortest_path = None
+    unreachable_from = []
+    
+    for basic_skill in basic_skills:
+        # Tenta BFS
+        path = graph.bfs_shortest_path(basic_skill, target)
+        
+        if path:
+            reachable_from_any = True
+            paths_count += 1
+            
+            if shortest_path is None or len(path) < len(shortest_path):
+                shortest_path = path
+        else:
+            unreachable_from.append(basic_skill)
+    
+    return {
+        'reachable': reachable_from_any,
+        'paths_count': paths_count,
+        'shortest_path': shortest_path,
+        'shortest_path_length': len(shortest_path) if shortest_path else None,
+        'unreachable_from': unreachable_from
+    }
+
+
+def validate_graph_extended(graph, target_skill: str) -> Dict[str, Any]:
+    """
+    Validação estendida incluindo alcançabilidade do target.
+    
+    Args:
+        graph: Instância de SkillGraph
+        target_skill: Habilidade objetivo (ex: 'S6')
+    
+    Returns:
+        Dict com validação completa + alcançabilidade
+    """
+    # Validação básica
+    basic_validation = validate_graph(graph)
+    
+    # Validação de alcançabilidade
+    if basic_validation['valid']:
+        reachability = check_reachability(graph, target_skill)
+        
+        if not reachability['reachable']:
+            basic_validation['valid'] = False
+            basic_validation['error_msg'] += f" Target {target_skill} não é alcançável!"
+        
+        basic_validation['details']['reachability'] = reachability
+    
+    return basic_validation
 
 # Aliases para compatibilidade
 check_cycles = detect_cycles

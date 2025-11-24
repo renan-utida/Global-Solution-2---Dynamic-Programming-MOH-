@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import warnings
 from pathlib import Path
+from typing import Dict, Any
 
 # Suprime warnings desnecessários
 warnings.filterwarnings('ignore')
@@ -270,6 +271,55 @@ VALIDATION_INFO = {
 }
 
 # ============================================
+# VALIDAÇÃO DE CONSTANTES
+# ============================================
+
+def validate_config() -> Dict[str, Any]:
+    """
+    Valida se as configurações estão consistentes.
+    
+    Returns:
+        Dict com status da validação
+    """
+    issues = []
+    
+    # Valida restrições
+    if MAX_TIME_HOURS <= 0:
+        issues.append(f"MAX_TIME_HOURS deve ser > 0, atual: {MAX_TIME_HOURS}")
+    
+    if MAX_COMPLEXITY <= 0:
+        issues.append(f"MAX_COMPLEXITY deve ser > 0, atual: {MAX_COMPLEXITY}")
+    
+    # Valida probabilidades dos cenários de mercado
+    total_prob = sum(scenario['prob'] for scenario in MARKET_SCENARIOS.values())
+    if not (0.99 <= total_prob <= 1.01):  # Tolera pequenos erros de arredondamento
+        issues.append(f"Probabilidades dos cenários devem somar 1.0, somam: {total_prob:.4f}")
+    
+    # Valida habilidades críticas
+    if len(CRITICAL_SKILLS) != 5:
+        issues.append(f"Devem haver exatamente 5 habilidades críticas, encontradas: {len(CRITICAL_SKILLS)}")
+    
+    # Valida seed
+    if GLOBAL_SEED < 0:
+        issues.append(f"GLOBAL_SEED deve ser >= 0, atual: {GLOBAL_SEED}")
+    
+    is_valid = len(issues) == 0
+    
+    return {
+        'valid': is_valid,
+        'issues': issues,
+        'message': '✅ Todas as configurações são válidas!' if is_valid else '❌ Problemas encontrados nas configurações'
+    }
+
+
+# Executa validação ao importar
+_config_validation = validate_config()
+if not _config_validation['valid']:
+    import warnings
+    for issue in _config_validation['issues']:
+        warnings.warn(f"⚠️  Configuração: {issue}")
+
+# ============================================
 # EXPORTAÇÃO DE CONSTANTES IMPORTANTES
 # ============================================
 
@@ -289,9 +339,11 @@ __all__ = [
     'format_skill_name',
     'format_path',
     'format_constraint',
+    'validate_config',
     
     # Caminhos
     'DATA_DIR',
     'OUTPUTS_DIR',
     'SKILLS_DATASET_FILE',
 ]
+

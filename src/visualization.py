@@ -22,6 +22,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from typing import Dict, List, Any, Optional, Tuple
 from pathlib import Path
+import networkx as nx
 
 # Configurações globais
 plt.style.use('seaborn-v0_8-darkgrid')
@@ -657,3 +658,184 @@ def save_all_plots(
     plt.close()
     
     print(f"✅ Gráficos salvos com sucesso!")
+
+def plot_graph_structure(
+    graph,
+    target_skill: str = 'S6',
+    critical_skills: List[str] = None,
+    basic_skills: List[str] = None,
+    save_path: Optional[Path] = None,
+    seed: int = 42
+) -> plt.Figure:
+    """
+    Plota estrutura do grafo com categorização por cores.
+    
+    Args:
+        graph: Instância de SkillGraph
+        target_skill: Habilidade objetivo (verde)
+        critical_skills: Lista de habilidades críticas (vermelho)
+        basic_skills: Lista de habilidades básicas (azul)
+        save_path: Caminho para salvar
+        seed: Seed para layout reproduzível
+    
+    Returns:
+        Figure: Figura do matplotlib
+    """
+    if critical_skills is None:
+        critical_skills = []
+    if basic_skills is None:
+        basic_skills = []
+    
+    # Cria grafo NetworkX
+    G = nx.DiGraph()
+    
+    # Adiciona nós com atributos
+    for node in graph.nodes:
+        metadata = graph.get_metadata(node)
+        G.add_node(node, 
+                   nome=metadata['nome'],
+                   valor=metadata['valor'],
+                   tempo=metadata['tempo_horas'],
+                   complexidade=metadata['complexidade'])
+    
+    # Adiciona arestas
+    for node in graph.nodes:
+        for neighbor in graph.get_neighbors(node):
+            G.add_edge(node, neighbor)
+    
+    # Layout
+    plt.figure(figsize=(12, 7))
+    pos = nx.spring_layout(G, k=2, iterations=50, seed=seed)
+    
+    # Cores por categoria
+    node_colors = []
+    for node in G.nodes():
+        if node == target_skill:
+            node_colors.append('#2ecc71')  # Verde - Objetivo
+        elif node in critical_skills:
+            node_colors.append('#e74c3c')  # Vermelho - Críticas
+        elif node in basic_skills:
+            node_colors.append('#3498db')  # Azul - Básicas
+        else:
+            node_colors.append('#9b59b6')  # Roxo - Avançadas
+    
+    # Desenha
+    nx.draw_networkx_nodes(G, pos, node_color=node_colors, 
+                           node_size=2000, alpha=0.9)
+    nx.draw_networkx_labels(G, pos, font_size=10, font_weight='bold')
+    nx.draw_networkx_edges(G, pos, edge_color='black', arrows=True, 
+                            arrowsize=20, arrowstyle='->', width=2, alpha=0.6)
+    
+    plt.title("Grafo de Dependências - Motor de Orientação de Habilidades", 
+              fontsize=16, fontweight='bold', pad=20)
+    
+    # Legenda
+    from matplotlib.patches import Patch
+    legend_elements = [
+        Patch(facecolor='#2ecc71', label=f'Objetivo ({target_skill})'),
+        Patch(facecolor='#e74c3c', label=f'Críticas ({len(critical_skills)})'),
+        Patch(facecolor='#3498db', label=f'Básicas ({len(basic_skills)})'),
+        Patch(facecolor='#9b59b6', label='Avançadas')
+    ]
+    plt.legend(handles=legend_elements, loc='upper left', fontsize=12)
+    
+    plt.axis('off')
+    plt.tight_layout()
+    
+    if save_path:
+        plt.savefig(save_path, dpi=300, bbox_inches='tight')
+    
+    return plt.gcf()
+
+def plot_graph_by_levels(graph, save_path: Optional[Path] = None) -> plt.Figure:
+    """
+    Plota grafo organizado por níveis (distância da raiz).
+    
+    Args:
+        graph: Instância de SkillGraph
+        save_path: Caminho para salvar
+    
+    Returns:
+        Figure: Figura do matplotlib
+    """
+    fig, ax = plt.subplots(figsize=(12, 6))
+    
+    # Calcula níveis
+    topo_order = graph.topological_sort()
+    levels = {}
+    for node in topo_order:
+        prereqs = graph.get_prerequisites(node)
+        if not prereqs:
+            levels[node] = 0
+        else:
+            levels[node] = max(levels[p] for p in prereqs) + 1
+    
+    # Agrupa por nível
+    from collections import defaultdict
+    by_level = defaultdict(list)
+    for node, level in levels.items():
+        by_level[level].append(node)
+    
+    # Posições dos nós (organizados em colunas por nível)
+    pos = {}
+    max_nodes_in_level = max(len(nodes) for nodes in by_level.values())
+    
+    # Ajusta espaçamento vertical para evitar gaps
+    vertical_spacing = max_nodes_in_level * 1.1
+    
+    for level, nodes in by_level.items():
+        # Centraliza nós no nível
+        y_positions = np.linspace(0, vertical_spacing, len(nodes) + 2)[1:-1]
+        for i, node in enumerate(nodes):
+            pos[node] = (level * 2, y_positions[i])  # Espaçamento horizontal = 3
+    
+    # Cria grafo NetworkX
+    G = nx.DiGraph()
+    for node in graph.nodes:
+        G.add_node(node)
+    
+    for node in graph.nodes:
+        for neighbor in graph.get_neighbors(node):
+            G.add_edge(node, neighbor)
+    
+    # Cores por categoria
+    node_colors = []
+    for node in G.nodes():
+        if node == 'S6':
+            node_colors.append('#2ecc71')  # Verde - Objetivo
+        elif node in ['S3', 'S5', 'S7', 'S8', 'S9']:
+            node_colors.append('#e74c3c')  # Vermelho - Críticas
+        elif graph.get_in_degree(node) == 0:
+            node_colors.append('#3498db')  # Azul - Básicas
+        else:
+            node_colors.append('#9b59b6')  # Roxo - Avançadas
+    
+    # Desenha
+    nx.draw_networkx_nodes(G, pos, node_color=node_colors, 
+                           node_size=2500, alpha=0.9, ax=ax)
+    nx.draw_networkx_labels(G, pos, font_size=9, font_weight='bold', ax=ax)
+    nx.draw_networkx_edges(G, pos, edge_color='black', arrows=True,
+                           arrowsize=20, width=2, alpha=0.6, ax=ax)
+    
+    # Labels dos níveis mais próximos do grafo
+    level_label_y = vertical_spacing + 0.7 
+    
+    for level in sorted(by_level.keys()):
+        ax.text(level * 2, level_label_y, f'Nível {level}',
+                ha='center', fontsize=12, fontweight='bold',
+                bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
+    
+    ax.set_title('Grafo Organizado por Níveis de Dependência',
+                 fontsize=16, fontweight='bold', pad=20)
+    
+    # Ajusta limites do eixo Y para eliminar espaço em branco
+    ax.set_ylim(-0.3, level_label_y + 0.3)
+    
+    ax.axis('off')
+    
+    plt.tight_layout()
+    
+    if save_path:
+        plt.savefig(save_path, dpi=300, bbox_inches='tight')
+    
+    return fig

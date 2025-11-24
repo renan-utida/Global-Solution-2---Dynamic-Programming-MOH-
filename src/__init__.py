@@ -49,27 +49,27 @@ try:
     from .desafio1_dp_knapsack import (
         solve_complete as solve_desafio1,
         save_desafio1_results,
-        run_desafio1_complete  # ← ADICIONAR
+        run_desafio1_complete
     )
     from .desafio2_permutations import (
         solve_complete as solve_desafio2,
-        save_desafio2_results,  # ← ADICIONAR
-        run_desafio2_complete   # ← ADICIONAR
+        save_desafio2_results,
+        run_desafio2_complete
     )
     from .desafio3_greedy import (
         solve_complete as solve_desafio3,
-        save_desafio3_results,  # ← ADICIONAR
-        run_desafio3_complete   # ← ADICIONAR
+        save_desafio3_results,
+        run_desafio3_complete 
     )
     from .desafio4_sorting import (
         solve_complete as solve_desafio4,
-        save_desafio4_results,  # ← ADICIONAR
-        run_desafio4_complete   # ← ADICIONAR
+        save_desafio4_results, 
+        run_desafio4_complete 
     )
     from .desafio5_recommendation import (
         solve_complete as solve_desafio5,
-        save_desafio5_results,  # ← ADICIONAR (quando chegar na Fase 6)
-        run_desafio5_complete   # ← ADICIONAR (quando chegar na Fase 6)
+        save_desafio5_results,
+        run_desafio5_complete
     )
 except ImportError:
     pass
@@ -87,7 +87,8 @@ try:
         plot_permutations_comparison,
         plot_greedy_vs_optimal,
         plot_market_scenarios,
-        create_dashboard
+        create_dashboard,
+        plot_graph_by_levels
     )
 except ImportError:
     pass  # Permite importação parcial durante desenvolvimento
@@ -132,6 +133,8 @@ __all__ = [
     'generate_summary_report',
     
     # Visualizações
+    'plot_graph_by_levels',
+    'plot_graph_structure',
     'plot_monte_carlo_distribution',
     'plot_permutations_comparison',
     'plot_greedy_vs_optimal',
